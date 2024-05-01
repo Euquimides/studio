@@ -605,6 +605,27 @@ pipelines:
               - src: repo-bootstrap/global/configuration/samples/sample-ui.xml
                 dest: configuration/samples/sample-ui.xml
             commitDetails: Add sample file for ui.xml
+      - currentVersion: 4.1.10
+        nextVersion: 4.1.11
+        operations:
+          - type: globalRepoUpgrader
+            files:
+              - src: repo-bootstrap/global/configuration/samples/sample-site-config-tools.xml
+                dest: /configuration/samples/sample-site-config-tools.xml
+            commitDetails: Update sample datasources for site config tools
+      - currentVersion: 4.1.11
+        nextVersion: 4.1.12
+        operations:
+          - type: globalRepoUpgrader
+            files:
+              - src: repo-bootstrap/global/configuration/samples/sample-blob-stores-config.xml
+                dest: configuration/samples/sample-blob-stores-config.xml
+            commitDetails: Update sample studio blob stores config file
+      - currentVersion: 4.1.12
+        nextVersion: 4.1.13
+        operations:
+          - type: dbScriptUpgrader
+            filename: 4.1.x/upgrade-4.1.12-to-4.1.13.sql
 
   # Pipeline to upgrade site repositories
   site:
@@ -800,7 +821,7 @@ pipelines:
           - type: xsltFileUpgrader
             path: /config/studio/site-policy-config.xml
             template: crafter/studio/upgrade/4.1.x/site-policy-config/site-policy-config-v4.1.2.xslt
-            commitDetails: Update site-policy-config.xml to prevent uppercase
+            commitDetails: Sync Studio version to 4.1.2
 
   # Pipeline to upgrade blueprints
   blueprint:
@@ -1141,6 +1162,12 @@ configurations:
             - type: xsltFileUpgrader
               template: crafter/studio/upgrade/4.0.x/config/site-config-tools/site-config-tools-v4.0.5.xslt
               commitDetails: Remove CMIS support
+        - currentVersion: 4.0.5
+          nextVersion: 4.0.6
+          operations:
+            - type: xsltFileUpgrader
+              template: crafter/studio/upgrade/4.0.x/config/site-config-tools/site-config-tools-v4.0.6.xslt
+              commitDetails: Add audio datasources
 
   contextual-nav:
     module: studio
@@ -1342,4 +1369,9 @@ configurations:
           - type: xsltFileUpgrader
             template: crafter/studio/upgrade/4.1.x/config/ui/ui-v4.1.3.0.xslt
             commitDetails: Update the UI to remove 'xbDetectionTimeoutMs'
-
+      - currentVersion: 4.1.3.0
+        nextVersion: 4.1.3.1
+        operations:
+          - type: xsltFileUpgrader
+            template: crafter/studio/upgrade/4.1.x/config/ui/ui-v4.1.3.1.xslt
+            commitDetails: Update the UI to change 'Site Tools' to 'Project Tools'

@@ -304,6 +304,8 @@ public interface StudioConfiguration {
     String CONFIGURATION_DASHBOARD_CONTENT_EXPIRED_SORT_BY =
             "studio.configuration.dashboard.contentExpiredQuery.sortBy";
 
+    String CONFIGURATION_MAX_CONFIGURATION_LENGTH = "studio.configuration.maxContentSize";
+
     // CORS
     String CONFIGURATION_CORS_ALLOWED_ORIGINS = "studio.cors.origins";
 
@@ -325,6 +327,7 @@ public interface StudioConfiguration {
 
     // Blob
     String BLOB_STORES_CONFIG_PATH = "studio.blob.config.path";
+    String BLOB_STORES_SERVERLESS_DEFAULT_CONFIG_PATH = "studio.blob.default.config.path";
 
     void loadConfig();
 
